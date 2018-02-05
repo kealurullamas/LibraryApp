@@ -23,6 +23,7 @@ Route::get('/faq','PagesController@faqs');
 Route::post('books/search','BooksController@search');
 Route::resource('/books','BooksController');
 Auth::routes();
-
-
+Route::post('BookRequest/findAndStore','BookRequestsController@findAndStore');
+Route::resource('BookRequest','BookRequestsController');
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+
