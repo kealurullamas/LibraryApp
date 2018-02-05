@@ -37,7 +37,7 @@ class BookRequestsController extends Controller
     {
         //
        // $book_request=new BookRequests;
-
+        return $request->input('bookid');
     }
     public function findAndStore(Request $request,$id)
     {
@@ -54,7 +54,9 @@ class BookRequestsController extends Controller
     public function show($id)
     {
         //
-        return view('Request.form');
+        $book=Books::find($id);
+        //return $book->title;
+        return view('Request.form')->with('book',$book);;
     }
 
     /**
