@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-
+use App\BooksRequest;
 class User extends Authenticatable
 {
     use Notifiable;
@@ -30,5 +30,10 @@ class User extends Authenticatable
     public function books()
     {
         return $this->belongsToMany('App\Books','books_users','users_id','books_id')->withTimestamps();;
+    }
+
+    public function bookRequests()
+    {
+        return $this->hasMany('App\BooksRequest');
     }
 }

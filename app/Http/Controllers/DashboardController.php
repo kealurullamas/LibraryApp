@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Books;
 use App\User;
+use App\BooksRequest;
 class DashboardController extends Controller
 {
     /**
@@ -28,7 +29,6 @@ class DashboardController extends Controller
         $book=Books::find(2);
         $user->books()->attach($book->id);*/
         $user=User::find(Auth()->user()->id);
-
         return view('dashboard')->with('user',$user);
     }
 }

@@ -23,10 +23,10 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($user->books as $user)
+                        @foreach($user->bookRequests as $users)
                             <tr>
-                                <td><img src='http://localhost:8080/LibraryApp/public/images/{{$user->image}}' class='img-thumbnail'></td>
-                                <td>{{$user->title}}</td>
+                                <td><img src='http://localhost:8080/LibraryApp/public/images/{{$users->book->image}}' class='img-thumbnail'></td>
+                                <td>{{$users->book->title}}</td>
                             </tr>
                         @endforeach
                         </tbody>

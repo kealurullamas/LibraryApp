@@ -11,4 +11,8 @@ class Books extends Model
     {
         return $this->belongsToMany('App\User','books_users','books_id','users_id')->withTimestamps();
     }
+    public function bookRequests()
+    {
+        return $this->hasMany('App\BookRequests');
+    }
 }

@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Books;
-use App\Users;
+use App\User;
+use App\BooksRequest;
 class BookRequestsController extends Controller
 {
     /**
@@ -36,7 +37,13 @@ class BookRequestsController extends Controller
     public function store(Request $request)
     {
         //
-       // $book_request=new BookRequests;
+        //here we save the request book info to DB
+        $book_request=new BooksRequest();
+        $book_request->user_id=Auth()->user()->id;
+        $book_request->book_id=$request->input('bookid');
+        $book_request->status='pending';
+        $book_request->reference_number='123123';
+        $book_request->save();
         return $request->input('bookid');
     }
     public function findAndStore(Request $request,$id)
