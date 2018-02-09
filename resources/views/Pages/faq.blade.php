@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <h1>LIBRARY HOURS AND LOCATION</h1>
-            <img src="http://localhost:8080/LibraryApp/public/images/library.png">
+            <img src="{{asset('images/library.png')}}">
             <h5>
                 Library Hours
                 Monday to Friday,7:00AM-8:00PM

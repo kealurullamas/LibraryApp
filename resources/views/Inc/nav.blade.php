@@ -20,8 +20,8 @@
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
-                  <li><a href="{{route('index')}}">Home</a></li>
-                  <li><a href="{{route('about')}}">About Us</a></li>
+                  <li class="{{Request::segment(1) === 'index' ? 'active' :null}}"><a href="{{route('index')}}">Home</a></li>
+                  <li class="{{Request::segment(1) === 'about' ? 'active' :null}}"><a href="{{route('about')}}">About Us</a></li>
                   <li><a href="{{route('contact')}}">Contact</a></li>
                   <li><a href="{{route('books.index')}}">Books</a></li>
                   <li><a href="{{route('faq')}}">Faq</a></li>

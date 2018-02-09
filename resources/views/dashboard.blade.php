@@ -25,7 +25,7 @@
                         <tbody>
                         @foreach($user->bookRequests as $users)
                             <tr>
-                                <td><img src='http://localhost:8080/LibraryApp/public/images/{{$users->book->image}}' class='img-thumbnail'></td>
+                                <td><img src="{{asset('images/'.$users->book->image)}}" class='img-thumbnail'></td>
                                 <td>{{$users->book->title}}</td>
                             </tr>
                         @endforeach
