@@ -7,7 +7,7 @@
         </div>
         @foreach($books as $book)
             <div class="container">
-                <img src="http://localhost:8080/LibraryApp/public/images/{{$book->image}}">
+                <img src="{{asset('images/'.$book->image)}}">
                 <h5><a href='http://localhost:8080/LibraryApp/public/books/{{$book->id}}'>{{$book->title}}</a></h3>
                 <h6>{{$book->author}}</h6>
             </div>

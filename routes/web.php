@@ -16,10 +16,10 @@ Route::get('/', function () {
 });
 
 Route::get('/','PagesController@index');
-Route::get('/index','PagesController@index');
+Route::get('/index','PagesController@index')->name('index');
 Route::get('/about','PagesController@about')->name('about');
-Route::get('/contact','PagesController@contact');
-Route::get('/faq','PagesController@faqs');
+Route::get('/contact','PagesController@contact')->name('contact');
+Route::get('/faq','PagesController@faqs')->name('faq');
 Route::post('books/search','BooksController@search');
 Route::resource('/books','BooksController');
 Auth::routes();

@@ -12,7 +12,7 @@
                 </button>
 
                 <!-- Branding Image -->
-                <a class="navbar-brand" href="http://localhost:8080/LibraryApp/public/index">
+                <a class="navbar-brand" href="{{route('index')}}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
             </div>
@@ -20,11 +20,11 @@
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
-                  <li><a href="#">Home</a></li>
+                  <li><a href="{{route('index')}}">Home</a></li>
                   <li><a href="{{route('about')}}">About Us</a></li>
-                  <li><a href="http://localhost:8080/LibraryApp/public/contact">Contact</a></li>
+                  <li><a href="{{route('contact')}}">Contact</a></li>
                   <li><a href="{{route('books.index')}}">Books</a></li>
-                  <li><a href="http://localhost:8080/LibraryApp/public/faq">Faq</a></li>
+                  <li><a href="{{route('faq')}}">Faq</a></li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->
