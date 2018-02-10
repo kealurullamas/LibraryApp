@@ -7,7 +7,6 @@
         </div>
         @foreach($books as $book)
             <div class="container">
-                
                 <img src="{{asset('images/'.$book->image)}}">
                 <h5><a href="{{route('books.show',$book->id)}}">{{$book->title}}</a></h3>
                 <h6>{{$book->author}}</h6>

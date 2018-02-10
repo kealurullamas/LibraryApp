@@ -22,9 +22,9 @@
                 <ul class="nav navbar-nav">
                   <li class="{{Request::segment(1) === 'index' ? 'active' :null}}"><a href="{{route('index')}}">Home</a></li>
                   <li class="{{Request::segment(1) === 'about' ? 'active' :null}}"><a href="{{route('about')}}">About Us</a></li>
-                  <li><a href="{{route('contact')}}">Contact</a></li>
-                  <li><a href="{{route('books.index')}}">Books</a></li>
-                  <li><a href="{{route('faq')}}">Faq</a></li>
+                  <li class="{{Request::segment(1) === 'contact' ? 'active' :null}}"><a href="{{route('contact')}}">Contact</a></li>
+                  <li class="{{Request::segment(1) === 'books' ? 'active' :null}}"><a href="{{route('books.index')}}">Books</a></li>
+                  <li class="{{Request::segment(1) === 'faq' ? 'active' :null}}"><a href="{{route('faq')}}">Faq</a></li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->

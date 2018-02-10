@@ -61,9 +61,14 @@ class BookRequestsController extends Controller
     public function show($id)
     {
         //
-        $book=Books::find($id);
-        //return $book->title;
-        return view('Request.form')->with('book',$book);;
+        if(!Auth()->guest()){
+            $book=Books::find($id);
+            return view('Request.form')->with('book',$book);
+        }
+        else
+        {
+            return view('auth.login');
+        }
     }
 
     /**
