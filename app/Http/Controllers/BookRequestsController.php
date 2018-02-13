@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Books;
 use App\User;
 use App\BooksRequest;
+use App\Notifications\NotifyUser;
 class BookRequestsController extends Controller
 {
     /**
@@ -44,11 +45,14 @@ class BookRequestsController extends Controller
         $book_request->status='pending';
         $book_request->reference_number='123123';
         $book_request->save();
+
+        $user=User::find(Auth()->user()->id);
+     
+        $user->notify(new NotifyUser(BooksRequest::where('user_id','=',$user->id)->firstOrFail()));
         return $request->input('bookid');
     }
     public function findAndStore(Request $request,$id)
     {
-
        
     }
 
