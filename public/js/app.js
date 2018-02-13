@@ -43085,9 +43085,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['notifications']
+    props: ['notifications'],
+    methods: {
+        MarkAsRead: function MarkAsRead(notification) {
+            var data = {
+                id: notification.id
+            };
+            axios.post("http://localhost:8080/LibraryApp/public/notification/read", data).then(function (response) {
+                window.location.href = "http://localhost:8080/LibraryApp/public/dashboard";
+            });
+        }
+    }
 });
 
 /***/ }),
@@ -43099,28 +43114,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("li", { staticClass: "dropdown" }, [
-    _vm._m(0),
-    _vm._v(" "),
     _c(
-      "ul",
-      { staticClass: "dropdown-menu", attrs: { role: "menu" } },
-      _vm._l(_vm.notifications, function(notification) {
-        return _c("li", [
-          _vm._v("\n            someasdadadasda\n            "),
-          _c("a", { attrs: { href: "#" } }, [
-            _vm._v(_vm._s(JSON.parse(notification.data).bookreq.id))
-          ])
-        ])
-      })
-    )
-  ])
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
       "a",
       {
         staticClass: "dropdown-toggle",
@@ -43133,15 +43127,46 @@ var staticRenderFns = [
         }
       },
       [
-        _vm._v("\n        Notifications "),
-        _c("span", {
-          staticClass: "glyphicon glyphicon-envelope",
-          attrs: { "aria-hidden": "true" }
-        })
+        _vm._v("\n        Notification  "),
+        _c("span", { staticClass: "badge", attrs: { "aria-hidden": "true" } }, [
+          _vm._v(_vm._s(_vm.notifications.length))
+        ])
       ]
+    ),
+    _vm._v(" "),
+    _c(
+      "ul",
+      { staticClass: "dropdown-menu", attrs: { role: "menu" } },
+      [
+        _vm._l(_vm.notifications, function(notification) {
+          return _c("li", [
+            _vm._v("\n            someasdadadasda\n            "),
+            _c(
+              "a",
+              {
+                attrs: { href: "#" },
+                on: {
+                  click: function($event) {
+                    _vm.MarkAsRead(notification)
+                  }
+                }
+              },
+              [_c("small", [_vm._v(_vm._s(notification.data.bookreq.id))])]
+            )
+          ])
+        }),
+        _vm._v(" "),
+        _vm.notifications.length == 0
+          ? _c("li", [
+              _vm._v("\n            There is no new Notification\n        ")
+            ])
+          : _vm._e()
+      ],
+      2
     )
-  }
-]
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {

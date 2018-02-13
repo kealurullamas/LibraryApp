@@ -27,3 +27,4 @@ Route::post('BookRequest/findAndStore','BookRequestsController@findAndStore');
 Route::resource('BookRequest','BookRequestsController');
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 route::post('/notification/get','NotificationController@get')->name('notify');
+route::post('/notification/read','NotificationController@read');
