@@ -48,8 +48,8 @@ if (token) {
  window.Pusher = require('pusher-js');
 
  window.Echo = new Echo({
+     authEndpoint : 'http://localhost:8080/LibraryApp/public/broadcasting/auth',
      broadcaster: 'pusher',
-     key: 'your-pusher-key',
-     cluster: 'mt1',
-     encrypted: true
+     key: 'f6821af7702093bfc9b1',
+     cluster: 'ap1'
  });

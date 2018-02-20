@@ -48,7 +48,12 @@ class BookRequestsController extends Controller
 
         $user=User::find(Auth()->user()->id);
      
-        $user->notify(new NotifyUser(BooksRequest::where('user_id','=',$user->id)->firstOrFail()));
+        $user->notify(new NotifyUser(BooksRequest::where(function($query){
+            $query->where('user_id','=',Auth()->user()->id)
+            ->where('status','=','Accepted')
+            ->where('id', DB::raw("(select max(`id`) from books_requests where status='Accepted')"));
+        })->firstOrFail()));
+        
         return $request->input('bookid');
     }
     public function findAndStore(Request $request,$id)

@@ -27,5 +27,10 @@ const app = new Vue({
         axios.post('http://localhost:8080/LibraryApp/public/notification/get').then(response=>{
             this.notifications=response.data;
         });
+
+        var userId = $('meta[name="userId"]').attr('content');
+        Echo.private('App.User.' + userId).notification((notification) => {
+            this.notifications.push(notification);
+        });
     }
 });

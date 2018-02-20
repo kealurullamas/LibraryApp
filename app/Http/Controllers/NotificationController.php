@@ -17,4 +17,9 @@ class NotificationController extends Controller
         Auth()->user()->unreadNotifications()->find($request->id)->markAsRead();
         return 'success';
     }
+    public function all()
+    {
+        Auth()->user()->unreadNotifications->markAsRead();
+        return redirect('dashboard');
+    }
 }

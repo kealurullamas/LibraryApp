@@ -1011,6 +1011,11 @@ var app = new Vue({
         axios.post('http://localhost:8080/LibraryApp/public/notification/get').then(function (response) {
             _this.notifications = response.data;
         });
+
+        var userId = $('meta[name="userId"]').attr('content');
+        Echo.private('App.User.' + userId).notification(function (notification) {
+            _this.notifications.push(notification);
+        });
     }
 });
 
@@ -1956,10 +1961,10 @@ if (token) {
 window.Pusher = __webpack_require__(36);
 
 window.Echo = new __WEBPACK_IMPORTED_MODULE_0_laravel_echo___default.a({
+    authEndpoint: 'http://localhost:8080/LibraryApp/public/broadcasting/auth',
     broadcaster: 'pusher',
-    key: 'your-pusher-key',
-    cluster: 'mt1',
-    encrypted: true
+    key: 'f6821af7702093bfc9b1',
+    cluster: 'ap1'
 });
 
 /***/ }),
@@ -48069,17 +48074,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['notifications'],
@@ -48087,6 +48081,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         MarkAsRead: function MarkAsRead(notification) {
             var data = {
                 id: notification.id
+
             };
             axios.post("http://localhost:8080/LibraryApp/public/notification/read", data).then(function (response) {
                 window.location.href = "http://localhost:8080/LibraryApp/public/dashboard";
@@ -48109,50 +48104,17 @@ var render = function() {
       {
         staticClass: "dropdown-toggle",
         attrs: {
-          href: "#",
-          "data-toggle": "dropdown",
-          role: "button",
+          href: "http://localhost:8080/LibraryApp/public/notification/readAll",
           "aria-expanded": "false",
           "aria-haspopup": "true"
         }
       },
       [
-        _vm._v("\n        Notification  "),
+        _vm._v("\n        Notifications "),
         _c("span", { staticClass: "badge", attrs: { "aria-hidden": "true" } }, [
           _vm._v(_vm._s(_vm.notifications.length))
         ])
       ]
-    ),
-    _vm._v(" "),
-    _c(
-      "ul",
-      { staticClass: "dropdown-menu", attrs: { role: "menu" } },
-      [
-        _vm._l(_vm.notifications, function(notification) {
-          return _c("li", [
-            _vm._v("\n            someasdadadasda\n            "),
-            _c(
-              "a",
-              {
-                attrs: { href: "#" },
-                on: {
-                  click: function($event) {
-                    _vm.MarkAsRead(notification)
-                  }
-                }
-              },
-              [_c("small", [_vm._v(_vm._s(notification.data.bookreq.id))])]
-            )
-          ])
-        }),
-        _vm._v(" "),
-        _vm.notifications.length == 0
-          ? _c("li", [
-              _vm._v("\n            There is no new Notification\n        ")
-            ])
-          : _vm._e()
-      ],
-      2
     )
   ])
 }

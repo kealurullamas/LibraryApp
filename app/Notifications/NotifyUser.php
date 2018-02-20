@@ -32,7 +32,7 @@ class NotifyUser extends Notification
      */
     public function via($notifiable)
     {
-        return ['database'];
+        return ['database','broadcast'];
     }
 
     /**
@@ -46,6 +46,14 @@ class NotifyUser extends Notification
         return ['bookreq'=>$this->bookreq];
     }
 
+    public function toBroadcast($notifiable)
+    {
+        return [
+            'data'=>[
+                'bookreq'=>$this->bookreq
+                ]
+            ];
+    }
     /**
      * Get the array representation of the notification.
      *
